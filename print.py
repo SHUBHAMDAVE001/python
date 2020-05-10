@@ -568,15 +568,64 @@
 import random
 
 
-class Dice:
-    def roll(self):
-        first = random.randint(1, 6)
-        second = random.randint(1, 6)
-        return first, second
+# class Dice:
+#     def roll(self):
+#         first = random.randint(1, 6)
+#         second = random.randint(1, 6)
+#         return first, second
+#
+#
+# dice = Dice()
+# # print(f"({dice.roll()}, {dice.roll()})")
+# print(dice.roll())
 
+# members = ['shivang', 'shubham', 'hemant']
+# members = input("write the memebers name to find leader=> ")
+# members_list = members.split()
+# for i in members_list:
+#     leader = random.choice(members_list)
+#     print(leader)
 
-dice = Dice()
-# print(f"({dice.roll()}, {dice.roll()})")
-print(dice.roll())
+# # Files and Directories
+
+# from pathlib import Path
+#
+# path = Path()
+# for file in path.glob('*'):
+#     print(file)
+# path.rmdir()
+# print(path.exists())
+
+# # PyPI and Pip
+#  different types of module to work on using PyPI
+#  get those data from PyPI and work on it
+
+import openpyxl as xl
+from openpyxl.chart import BarChart, Reference
+
+wb = xl.load_workbook('transactions.xlsx')
+sheet = wb['Sheet1']
+
+cell = sheet.cell(2, 1)
+
+for row in range(2, sheet.max_row + 1):
+    cell = sheet.cell(row, 3)
+    corrected_price = cell.value + (cell.value * 0.09)
+    corrected_price_cell = sheet.cell(row, 4)
+    corrected_price_cell.value = corrected_price
+
+# values = Reference(sheet,
+#           min_row=2,
+#           max_row=sheet.max_row,
+#           min_col=4,
+#           max_col=4)
+#
+# chart = BarChart()
+# chart.add_data(values)
+#
+# sheet.add_chart(values, 'e2')
+
+wb.save('transactions2.xlsx')
+
 # video 03:44:00 tak hua
 
